@@ -8,7 +8,6 @@ import java.awt.*;
 public class Sun {
 
     private int posX, posY;
-    private float speedY = 0;
     private Animation sunShine;
 
     public Sun() {
