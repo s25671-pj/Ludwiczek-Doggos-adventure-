@@ -10,7 +10,7 @@ public class GameWindow extends JFrame{
 
     public GameWindow() {
             super("Doggo the game");
-            setSize(SCREEN_WIDTH, 600);
+            setSize(SCREEN_WIDTH, 500);
             setLocation(400,400);
             setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
             gameScreen = new GameScreen();

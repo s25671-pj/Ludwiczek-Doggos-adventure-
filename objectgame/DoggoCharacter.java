@@ -14,11 +14,13 @@ public class DoggoCharacter {
     private float y = 0;
     private float speedY = 0;
     private Animation doggoRun;
+    private Rectangle box;
 
     public DoggoCharacter() {
         doggoRun = new Animation(200);
         doggoRun.addFrame(Resource.getResourceImage("data/ludwiczek1.png"));
         doggoRun.addFrame(Resource.getResourceImage("data/ludwiczek2.png"));
+        box = new Rectangle();
     }
 
     public void update() {
@@ -29,8 +31,11 @@ public class DoggoCharacter {
         } else {
             speedY += GRAVITY;
             y += GRAVITY;
-
         }
+        box.x = (int)x;
+        box.y = (int)y;
+        box.width = doggoRun.getFrame().getWidth();
+        box.height = doggoRun.getFrame().getHeight();
     }
 
 
@@ -41,7 +46,7 @@ public class DoggoCharacter {
     }
 
     public void jump(){
-        speedY = -100;
+        speedY = -200;
         y += speedY;
     }
 
@@ -67,5 +72,9 @@ public class DoggoCharacter {
 
     public void setSpeedY(float speedY) {
         this.speedY = speedY;
+    }
+
+    public Rectangle getBound() {
+        return box;
     }
 }
