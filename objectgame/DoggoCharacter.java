@@ -13,8 +13,9 @@ public class DoggoCharacter {
     private float x = 0;
     private float y = 0;
     private float speedY = 0;
-    private Animation doggoRun;
-    private Rectangle box;
+    private final Animation doggoRun;
+    private final Rectangle box;
+    private boolean isClean = true;
 
     public DoggoCharacter() {
         doggoRun = new Animation(200);
@@ -30,7 +31,7 @@ public class DoggoCharacter {
             y = GROUND - doggoRun.getFrame().getHeight();
         } else {
             speedY += GRAVITY;
-            y += GRAVITY;
+            y += speedY;
         }
         box.x = (int)x;
         box.y = (int)y;
@@ -40,15 +41,18 @@ public class DoggoCharacter {
 
 
     public void draw(Graphics g){
-        g.setColor(Color.RED);
-        g.drawRect((int) x, (int) y, doggoRun.getFrame().getWidth(), doggoRun.getFrame().getHeight());
         g.drawImage(doggoRun.getFrame(), (int)x, (int) y, null);
     }
 
     public void jump(){
-        speedY = -200;
-        y += speedY;
+
+        if( speedY == 0) {
+            speedY = -4;
+            y += speedY;
+        }
+
     }
+
 
     public float getX() {
         return x;
@@ -58,23 +62,19 @@ public class DoggoCharacter {
         this.x = x;
     }
 
-    public float getY() {
-        return y;
-    }
-
     public void setY(float y) {
         this.y = y;
     }
 
-    public float getSpeedY() {
-        return speedY;
-    }
-
-    public void setSpeedY(float speedY) {
-        this.speedY = speedY;
-    }
-
     public Rectangle getBound() {
         return box;
+    }
+
+    public void setClean(boolean clean){
+        isClean = clean;
+    }
+
+    public boolean getClean() {
+        return isClean;
     }
 }

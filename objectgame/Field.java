@@ -13,21 +13,21 @@ import static userinterface.GameScreen.GROUND;
 
 public class Field {
 
-    private List<ImageField> listImage;
-    private BufferedImage imageField1, imageField2;
-    private Random random;
+    private final List<ImageField> listImage;
+    private final BufferedImage imageField1, imageField2;
+    private final Random random;
 
     public Field(GameScreen game) {
         random = new Random();
         imageField1 =Resource.getResourceImage("data/field1.png");
         imageField2 =Resource.getResourceImage("data/field2.png");
-        listImage = new ArrayList<ImageField>();
+        listImage = new ArrayList<>();
         int nField = 888 / imageField1.getWidth() + 1;
 
         for(int i = 0; i < nField; i++){
 
             ImageField imageField = new ImageField();
-            imageField.posX = (int) (i * imageField1.getWidth());
+            imageField.posX = (i * imageField1.getWidth());
             imageField.image = getImageField();
             listImage.add(imageField);
         }
@@ -67,7 +67,7 @@ public class Field {
     }
 
 
-    private class ImageField {
+    private static class ImageField {
 
         int posX;
         BufferedImage image;

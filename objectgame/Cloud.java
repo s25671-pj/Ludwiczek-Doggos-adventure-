@@ -9,11 +9,11 @@ import java.util.List;
 
 public class Cloud {
 
-    private BufferedImage cloudImage;
-    private List<Cloudy> cloudies;
+    private final BufferedImage cloudImage;
+    private final List<Cloudy> cloudies;
     public Cloud(){
         cloudImage = Resource.getResourceImage("data/cloud.png");
-        cloudies = new ArrayList<Cloudy>();
+        cloudies = new ArrayList<>();
 
         Cloudy cloudy1 = new Cloudy();
         cloudy1.posX = 80;
@@ -64,7 +64,7 @@ public class Cloud {
         }
     }
 
-    private class Cloudy {
+    private static class Cloudy {
         float posX;
         float posY;
     }

@@ -4,14 +4,17 @@ import others.Resource;
 import java.awt.*;
 import java.awt.image.BufferedImage;
 
-public class IceCream {
+public class IceCream extends Enemy{
 
 
     private BufferedImage image;
     private int posX, posY;
-    private Rectangle box;
+    private final Rectangle box;
+    private final DoggoCharacter doggoCharacter;
+    private boolean isScoreHigher = false;
 
-    public IceCream(){
+    public IceCream(DoggoCharacter doggoCharacter){
+        this.doggoCharacter = doggoCharacter;
         image = Resource.getResourceImage("data/kupka1.png");
         posX = 400;
         posY = 355;
@@ -27,12 +30,43 @@ public class IceCream {
         box.height = image.getHeight();
     }
 
+    @Override
     public Rectangle getBound(){
         return box;
     }
 
+    @Override
     public void draw (Graphics g){
             g.drawImage(image, posX, posY,null);
 
+    }
+
+    public void setX(int x){
+        posX = x;
+    }
+
+    public void setImage(BufferedImage image){
+        this.image = image;
+    }
+
+    @Override
+    public boolean AnotherOne(){
+        return (posX + image.getWidth() < 3);
+
+    }
+
+    @Override
+    public boolean isOver(){
+        return (doggoCharacter.getX() > posX);
+    }
+
+    @Override
+    public boolean isScoreHigher(){
+        return isScoreHigher;
+    }
+
+    @Override
+    public void setIsScoreHigher(boolean isScoreHigher){
+        this.isScoreHigher = isScoreHigher;
     }
 }

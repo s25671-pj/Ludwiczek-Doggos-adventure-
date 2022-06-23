@@ -6,14 +6,14 @@ import java.util.ArrayList;
 
 public class Animation {
 
-    private List<BufferedImage> frames;
+    private final List<BufferedImage> frames;
     private int frameIndex = 0;
-    private int dtime;
+    private final int dtime;
     private long ptime;
 
     public Animation(int dtime){
         this.dtime = dtime;
-        frames = new ArrayList<BufferedImage>();
+        frames = new ArrayList<>();
 
     }
 
